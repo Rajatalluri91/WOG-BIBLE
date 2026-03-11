@@ -53,7 +53,7 @@
     <div class="search-modal-content" style="max-width: 320px;">
         <div class="modal-header"><h2>సెట్టింగ్స్</h2><button class="close-btn" onclick="toggleSettingsModal()"><span class="material-icons-outlined">close</span></button></div>
         <div style="display: flex; flex-direction: column; gap: 10px;">
-            <button class="menu-book-btn" onclick="toggleSettingsModal(); toggleSearch();" style="display: flex; align-items: center; gap: 10px; font-size: 18px;"><span class="material-icons-outlined">search</span> వెతుకులాట (Search)</button>
+            <button class="menu-book-btn" onclick="toggleSettingsModal(); toggleSearch();" style="display: flex; align-items: center; gap: 10px; font-size: 18px;"><span class="material-icons-outlined">search</span> వెతుకు (Search)</button>
             <button class="menu-book-btn" onclick="toggleSettingsModal(); toggleParallelBible();" style="display: flex; align-items: center; gap: 10px; font-size: 18px;"><span class="material-icons-outlined" id="parallel-icon">language</span> ఇంగ్లీష్ బైబిల్ (KJV)</button>
             <button class="menu-book-btn" onclick="toggleSettingsModal(); showNotesView(true);" style="display: flex; align-items: center; gap: 10px; font-size: 18px;"><span class="material-icons-outlined">edit_note</span> నా నోట్స్</button>
             <button class="menu-book-btn" onclick="toggleSettingsModal(); showBookmarksView(true);" style="display: flex; align-items: center; gap: 10px; font-size: 18px;"><span class="material-icons-outlined">bookmarks</span> బుక్‌మార్క్స్</button>
@@ -78,7 +78,7 @@
 
 <div class="search-modal" id="search-modal">
     <div class="search-modal-content">
-        <div class="modal-header"><h2>వెతుకులాట</h2><button class="close-btn" onclick="toggleSearch()"><span class="material-icons-outlined">close</span></button></div>
+        <div class="modal-header"><h2>వెతుకు</h2><button class="close-btn" onclick="toggleSearch()"><span class="material-icons-outlined">close</span></button></div>
         <div class="search-group"><label>ఎక్కడ వెతకాలి?</label><select id="search-scope"><option value="book" selected>ప్రస్తుత పుస్తకంలో</option><option value="ot">పాత నిబంధన (OT)</option><option value="nt">కొత్త నిబంధన (NT)</option><option value="all">బైబిల్ మొత్తం</option></select></div>
         <div class="search-group"><label>ఏ పదం వెతకాలి?</label><input type="text" id="search-input" placeholder="ఉదా: దేవుడు..."></div>
         <button class="primary-btn" onclick="executeSearch()">వెతకండి</button>
@@ -163,7 +163,11 @@
         <div class="about-card">
             <h2 style="margin-bottom: 5px; font-size: 30px;">WORLD OF GOD</h2>
             <p style="color: var(--accent); font-weight: bold; margin-bottom: 25px;">Founder: Rajesh Karatapu</p>
-            <div class="about-text-content"><p>దేవుని వాక్యం.. మన రక్షణకు, శిక్షణకు పరలోకపు తండ్రి వ్రాయించిన తన మనసులోని మాటలు.</p></div>
+            <div class="about-text-content"><p>దేవుని వాక్యం..  
+మన రక్షణకు, శిక్షణకు పరలోకపు తండ్రి వ్రాయించి ఇచ్చిన తన మనసులోని మాటలు..<br>
+సామాజిక మాధ్యమాల ద్వారా దేవుని వాక్యం అందరికీ చాలా దగ్గరైంది కానీ.. సత్యమైనది దూరముగాను, లోతుగాను ఉన్నదని.. దానిని పరిశీలిస్తేనే బోధపడుతుందని వాక్యం సెలవిచ్చింది.<br>
+వాక్యాన్ని వక్రీకరించి సత్యాన్ని అందకుండా చేయాలన్న అపవాది తంత్రాలను  కూలద్రోస్తూ.. మా వంతు ప్రయత్నంగా WORLD OF GOD యూట్యూబ్ ఛానల్, వాట్సాప్ గ్రూప్ మరియు Instagram ద్వారా దేవుని వాక్యాన్ని సరిగా విభజిస్తూ.. అందరికీ అందించాలని మా వంతు ప్రయత్నంగా దేవుని దయవలన మా చిన్న పరిచర్యను జరిగిస్తున్నాము..<br>
+సత్య వాక్యాన్ని నేర్చుకుందాం..! అందరికీ అందచేద్దాం..!!</p></div>
         </div>
     </div>
 </main>
