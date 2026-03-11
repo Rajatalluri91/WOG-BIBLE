@@ -135,20 +135,22 @@ body.dark-mode .chapter-btn.active { color: var(--bg); background: var(--accent)
 #verses-container { padding: 10px; }
 
 .verse { 
-    display: flex; /* నంబర్ మరియు వాక్యం పక్కపక్కన ఉండేలా */
-    align-items: flex-start;
+    display: flex; 
+    align-items: flex-start; /* పై భాగం నుండి సమానంగా మొదలవుతాయి */
     position: relative; 
-    margin-bottom: 20px; /* వచనాల మధ్య గ్యాప్ */
-    padding: 8px 30px 8px 10px; 
+    margin-bottom: 12px; /* గ్యాప్ కొంచెం తగ్గించాం */
+    padding: 10px; 
     border-radius: 8px; 
     transition: background-color 0.2s;
+    line-height: 1.8; /* లైన్ హైట్ ఇక్కడ కూడా ఉండటం మంచిది */
 }
 
 .verse-num { 
     color: var(--accent); 
     font-weight: bold; 
-    font-size: 14px; /* నంబర్ సైజు తగ్గించాం */
-    min-width: 25px; 
+    font-size: 14px; 
+    min-width: 35px; /* కొంచెం వెడల్పు పెంచాం */
+    flex-shrink: 0; /* నంబర్ సైజు తగ్గకుండా ఉండటానికి */
     margin-top: 6px; 
     user-select: none; 
 }
@@ -157,9 +159,10 @@ body.dark-mode .chapter-btn.active { color: var(--bg); background: var(--accent)
     flex: 1; 
     font-family: 'Mallanna', 'Anek Telugu', serif; 
     font-size: var(--verse-size); 
-    line-height: 1.9; /* తెలుగు అక్షరాలు గుద్దుకోకుండా అద్భుతమైన గ్యాప్ */
+    line-height: 1.8; /* మరీ ఎక్కువ గ్యాప్ లేకుండా 1.8 బాగుంటుంది */
     color: var(--text);
-    cursor: pointer; 
+    cursor: pointer;
+    word-break: break-word; /* స్క్రీన్ బయటకి వెళ్లకుండా */
 }
 
 .verse-text-en {
