@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@400;600;700&family=Mallanna&display=swap');
+
+:root {
+    --primary: #1a365d;
+    --accent: #d4af37;
+    --bg: #f8fafc;
+    --text: #2d3748;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --verse-size: 22px; 
+    --highlight-search-bg: #fef08a;
+    --highlight-search-text: #b45309;
+}
+
+body.dark-mode {
+    --primary: #222222;       
+    --accent: #c8a241;        
+    --bg: #000000;            
+    --text: #e0e0e0;          
+    --card: #111111;          
+    --border: #333333;        
+    --highlight-search-bg: #3a3215;  
+    --highlight-search-text: #e8c66a; 
+}
+
+body {
+    font-family: 'Anek Telugu', sans-serif;
+    margin: 0; padding: 0; background-color: var(--bg); color: var(--text);
+    overflow-x: hidden; transition: background-color 0.3s, color 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input, textarea {
+    -webkit-user-select: text !important;
+    user-select: text !important;
+}
+
+h1, h2, h3, h4 { font-family: 'Anek Telugu', sans-serif; font-weight: 700; margin: 0;}
+.material-icons, .material-icons-outlined { vertical-align: middle; }
+
+/* ---------------- HEADER & SIDEBAR ---------------- */
+header {
+    background: linear-gradient(to right, #1a365d, #2c5282);
+    color: white; padding: 12px 15px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+body.dark-mode header { background: #111111; border-bottom: 1px solid var(--border); color: white; }
+header h1 { font-size: 20px; letter-spacing: 1px; flex: 1; text-align: center; margin: 0;}
+.header-left { display: flex; align-items: center; width: 40px;}
+.header-right { display: flex; gap: 8px; justify-content: flex-end; align-items: center; }
+.icon-btn { background: none; border: none; color: inherit; cursor: pointer; transition: 0.2s; padding: 5px; display: flex; align-items: center; justify-content: center;}
+
+.sidebar {
+    position: fixed; top: 0; left: -300px; width: 280px; height: 100%;
+    background: var(--card); box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    transition: 0.3s ease; z-index: 1001; display: flex; flex-direction: column;
+}
+.sidebar.open { left: 0; }
+.sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; display: none; }
+.sidebar-overlay.open { display: block; }
+.sidebar-header { padding: 20px; background: var(--primary); color: white; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+body.dark-mode .sidebar-header { color: var(--accent); }
+.close-btn { background: none; border: none; color: inherit; cursor: pointer; display: flex;}
+.sidebar-content { padding: 10px; overflow-y: auto; flex: 1; }
+.book-cat { color: var(--accent); font-weight: bold; padding: 10px; margin-top: 10px; border-bottom: 1px solid var(--border); }
+.menu-book-btn { display: block; width: 100%; padding: 12px 10px; margin: 2px 0; background: none; border: none; text-align: left; font-size: 16px; font-family: 'Anek Telugu'; cursor: pointer; border-radius: 5px; color: var(--text); }
+.menu-book-btn:hover { background: var(--bg); color: var(--accent); font-weight: bold; }
+
+/* ---------------- VIEWS & CARDS ---------------- */
+.view-container { padding: 15px; max-width: 900px; margin: 0 auto; min-height: 80vh; padding-bottom: 90px;}
+@media (max-width: 450px) { .view-container { padding: 10px; } }
+.page-header { display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px;}
+.back-btn { background: var(--primary); color: white; border: 1px solid var(--border); padding: 5px 12px; border-radius: 5px; cursor: pointer; font-family: 'Anek Telugu'; font-weight: bold; display: flex; align-items: center; gap: 4px; font-size: 14px;}
+body.dark-mode .back-btn { color: var(--accent); }
+.back-btn .material-icons-outlined { font-size: 18px; }
+.book-title { color: var(--primary); font-size: 22px; flex: 1;}
+body.dark-mode .book-title { color: var(--text); }
+
+.daily-verse-card { background: var(--card); padding: 25px; border-radius: 12px; text-align: center; border-left: 5px solid var(--accent); margin-bottom: 30px; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.daily-verse-card h3 { color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 5px;}
+body.dark-mode .daily-verse-card h3 { color: var(--accent); }
+.daily-verse-card p { font-family: 'Mallanna', serif; font-size: 26px; line-height: 1.6; margin: 0;}
+.verse-ref { color: var(--accent); font-weight: bold; display: block; margin-top: 15px; font-size: 18px;}
+
+.home-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+.grid-item { background: var(--card); padding: 25px 10px; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s; border: 1px solid var(--border); }
+.grid-item:hover { transform: translateY(-3px); border-color: var(--accent); }
+.grid-item .icon .material-icons-outlined { font-size: 40px; margin-bottom: 15px; color: var(--primary); }
+body.dark-mode .grid-item .icon .material-icons-outlined { color: var(--text); }
+.grid-item h4 { color: var(--primary); font-size: 18px; }
+body.dark-mode .grid-item h4 { color: var(--text); }
+
+.about-card { background: var(--card); border: 1px solid var(--border); padding: 30px; border-radius: 12px; text-align: center; margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.about-card h2 { color: var(--primary); margin-bottom: 10px; font-size: 28px;}
+body.dark-mode .about-card h2 { color: #ffffff; }
+.about-text-content { text-align: center; line-height: 1.8; font-size: 18px; color: var(--text); }
+.about-tagline { text-align: center; color: var(--primary); margin-top: 25px; font-size: 22px; }
+body.dark-mode .about-text-content, body.dark-mode .about-text-content p, body.dark-mode .about-tagline, body.dark-mode .about-card p { color: #ffffff !important; }
+.social-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 18px; transition: 0.3s; font-family: 'Anek Telugu', sans-serif; background: transparent; border: 2px solid; }
+.outline-yt { color: #FF0000; border-color: #FF0000; } .outline-yt:hover { background: #FF0000; color: #ffffff; }
+.outline-wa { color: #25D366; border-color: #25D366; } .outline-wa:hover { background: #25D366; color: #ffffff; }
+.outline-ig { color: #E1306C; border-color: #E1306C; } .outline-ig:hover { background: #E1306C; color: #ffffff; }
+body.dark-mode .social-btn { background: #000000; }
+
+/* ---------------- GRIDS & SMART NAVIGATOR ---------------- */
+.chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); gap: 12px; }
+.grid-num-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 15px 0; text-align: center; border-radius: 8px; font-size: 20px; font-weight: bold; cursor: pointer; transition: 0.2s; font-family: 'Poppins', sans-serif; }
+.grid-num-btn:hover { background: var(--primary); color: var(--accent); border-color: var(--accent); }
+
+/* వచనాల గ్రిడ్ కోసం ప్రత్యేకమైన లేత గోల్డ్ రంగు */
+#verses-grid-container .grid-num-btn, #nav-verses-container .grid-num-btn { background-color: rgba(212, 175, 55, 0.15); border: 1px solid var(--accent); color: var(--primary); }
+body.dark-mode #verses-grid-container .grid-num-btn, body.dark-mode #nav-verses-container .grid-num-btn { background-color: rgba(200, 162, 65, 0.2); color: var(--accent); }
+#verses-grid-container .grid-num-btn:hover, #nav-verses-container .grid-num-btn:hover { background-color: var(--accent); color: #ffffff; }
+
+#bible-nav-modal { align-items: flex-end; } 
+.nav-tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--card); }
+.nav-tab { flex: 1; padding: 15px 0; border: none; background: none; font-weight: bold; font-family: 'Anek Telugu'; font-size: 16px; color: gray; border-bottom: 3px solid transparent; cursor: pointer; transition: 0.3s; }
+.nav-tab.active { color: var(--primary); border-bottom-color: var(--accent); }
+body.dark-mode .nav-tab.active { color: var(--accent); }
+.nav-tab.disabled { opacity: 0.4; pointer-events: none; }
+.nav-content-area { flex: 1; overflow-y: auto; padding: 15px; background: var(--bg); height: 100%;}
+.nav-book-btn { width: 100%; text-align: left; padding: 15px 12px; margin-bottom: 8px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--text); font-size: 18px; font-weight: bold; cursor: pointer; font-family: 'Anek Telugu'; transition: 0.2s; }
+.nav-book-btn:hover, .nav-book-btn.active-book { border-color: var(--accent); color: var(--accent); background: rgba(212, 175, 55, 0.05);}
+/* ---------------- PRO READING VIEW (వచనాల లేఅవుట్) ---------------- */
+.chapters-scroll { display: flex; overflow-x: auto; gap: 10px; padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--border);}
+.chapter-btn { padding: 6px 15px; background: var(--card); border: 1px solid var(--border); color: var(--text); border-radius: 20px; font-weight: bold; cursor: pointer; white-space: nowrap; font-family: 'Anek Telugu'; }
+.chapter-btn.active { background: var(--primary); color: var(--accent); border-color: var(--accent); }
+body.dark-mode .chapter-btn.active { color: var(--bg); background: var(--accent); }
+
+#verses-container { padding: 10px; }
+
+.verse { 
+    display: flex; /* నంబర్ మరియు వాక్యం పక్కపక్కన ఉండేలా */
+    align-items: flex-start;
+    position: relative; 
+    margin-bottom: 20px; /* వచనాల మధ్య గ్యాప్ */
+    padding: 8px 30px 8px 10px; 
+    border-radius: 8px; 
+    transition: background-color 0.2s;
+}
+
+.verse-num { 
+    color: var(--accent); 
+    font-weight: bold; 
+    font-size: 14px; /* నంబర్ సైజు తగ్గించాం */
+    min-width: 25px; 
+    margin-top: 6px; 
+    user-select: none; 
+}
+
+.verse-text { 
+    flex: 1; 
+    font-family: 'Mallanna', 'Anek Telugu', serif; 
+    font-size: var(--verse-size); 
+    line-height: 1.9; /* తెలుగు అక్షరాలు గుద్దుకోకుండా అద్భుతమైన గ్యాప్ */
+    color: var(--text);
+    cursor: pointer; 
+}
+
+.verse-text-en {
+    display: none; 
+    font-family: 'Georgia', serif; 
+    font-size: calc(var(--verse-size) - 4px); 
+    color: #6a7280;
+    margin-top: 10px; 
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+    line-height: 1.5;
+    font-style: italic;
+}
+body.dark-mode .verse-text-en { color: #9ca3af; }
+body.show-parallel .verse-text-en { display: block; }
+
+.verse-text.highlight-none { background-color: transparent; }
+.verse.selected { background-color: rgba(212, 175, 55, 0.1); border-left: 4px solid var(--accent); padding-left: 6px;}
+body.dark-mode .verse.selected { background-color: rgba(200, 162, 65, 0.15); }
+
+.bookmark-btn { position: absolute; top: 5px; right: -5px; background: none; border: none; cursor: pointer; color: #777; transition: 0.2s; padding: 5px; }
+body.dark-mode .bookmark-btn { color: #555; }
+.bookmark-btn.saved { color: var(--accent); }
+.note-indicator { color: var(--accent); font-size: 18px; margin-left: 5px; cursor: pointer; vertical-align: super; }
+
+/* ---------------- LISTS & NOTES ---------------- */
+.list-card { background: var(--card); border: 1px solid var(--border); padding: 15px; border-radius: 8px; margin-bottom: 15px; cursor: pointer; transition: 0.2s; position: relative;}
+.list-card:hover { border-color: var(--accent); }
+.list-card .ref { color: var(--accent); font-weight: bold; font-size: 16px; margin-bottom: 5px; display: flex; align-items: center; gap: 5px;}
+.list-card .text { font-family: 'Mallanna', serif; font-size: 22px; color: var(--text); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
+.list-card .user-note { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border); font-size: 18px; color: var(--text); font-family: inherit;}
+
+.note-editor-wrapper { display: flex; flex-direction: column; height: 75vh; }
+.note-heading-input { width: 100%; font-size: 24px; font-weight: bold; color: var(--primary); border: none; border-bottom: 2px solid var(--border); padding: 10px 0; margin-bottom: 15px; background: transparent; outline: none; font-family: 'Anek Telugu', sans-serif; }
+body.dark-mode .note-heading-input { color: #ffffff; border-color: var(--border); }
+.note-body-textarea { width: 100%; flex: 1; font-size: 20px; color: var(--text); border: none; padding: 10px 0; background: transparent; outline: none; font-family: 'Mallanna', serif; resize: none; line-height: 1.8; }
+body.dark-mode .note-body-textarea { color: #ffffff; }
+.note-body-textarea::placeholder, .note-heading-input::placeholder { color: #999; }
+
+/* ---------------- MODALS & POPUPS ---------------- */
+.search-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1002; display: none; justify-content: center; align-items: center; }
+.search-modal.open { display: flex; }
+.search-modal-content { background: var(--card); padding: 25px; border-radius: 12px; border: 1px solid var(--border); width: 90%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.modal-header { display: flex; justify-content: space-between; margin-bottom: 20px;}
+.modal-header h2 { color: var(--primary); font-size: 22px; }
+body.dark-mode .modal-header h2 { color: #ffffff; }
+
+.search-group { margin-bottom: 15px; }
+.search-group label { display: block; font-weight: 600; margin-bottom: 5px; color: var(--text); }
+body.dark-mode .search-group label { color: #ffffff; }
+.search-group select, .search-group input { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 16px; background: var(--bg); color: var(--text); outline: none; font-family: inherit; }
+body.dark-mode .search-group select, body.dark-mode .search-group input { color: #ffffff; }
+.search-group input:focus { border-color: var(--accent); }
+
+.primary-btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: 1px solid var(--border); border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; font-family: inherit; transition: 0.3s; }
+body.dark-mode .primary-btn { color: var(--bg); background: var(--accent); }
+.primary-btn:hover { opacity: 0.9; }
+
+.color-options { display: flex; gap: 15px; justify-content: center; margin-top: 10px;}
+.color-btn { width: 45px; height: 45px; border-radius: 50%; border: none; cursor: pointer; transition: transform 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
+.color-btn:hover { transform: scale(1.1); }
+.highlight { background: var(--highlight-search-bg); font-weight: bold; color: var(--highlight-search-text); padding: 0 4px; border-radius: 3px; }
+
+/* ---------------- MUSIC PLAYER ---------------- */
+.music-btn { width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 18px; font-family: inherit; font-weight: bold; display: flex; align-items: center; justify-content: flex-start; gap: 10px; cursor: pointer; transition: 0.3s; }
+.music-btn:hover { border-color: var(--accent); }
+.music-btn.active { background: rgba(212, 175, 55, 0.15); border-color: var(--accent); color: var(--primary); }
+body.dark-mode .music-btn.active { color: var(--accent); }
+.music-btn .status-icon { margin-left: auto; color: gray; }
+.music-btn.active .status-icon { color: var(--accent); }
+.stop-music-btn { color: #e74c3c; justify-content: center; margin-top: 10px; }
+.stop-music-btn:hover { background: #fee2e2; border-color: #e74c3c; }
+body.dark-mode .stop-music-btn:hover { background: #7f1d1d; color: white; border-color: #7f1d1d;}
+
+/* ---------------- FLOATING ACTION BAR ---------------- */
+#selection-action-bar {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+    background: var(--primary); padding: 10px 20px; border-radius: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5); z-index: 2000; display: none;
+}
+body.dark-mode #selection-action-bar { background: var(--accent); }
+.action-buttons { display: flex; gap: 20px; align-items: center; }
+.action-buttons button { background: none; border: none; color: white; display: flex; align-items: center; gap: 5px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: 'Anek Telugu', sans-serif; }
+body.dark-mode .action-buttons button { color: var(--bg); }
+
+::-webkit-scrollbar { width: 0px; height: 0px; background: transparent; }
