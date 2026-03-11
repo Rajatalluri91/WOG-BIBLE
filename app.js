@@ -448,6 +448,26 @@ async function shareTextFn(text, title) {
     }
 }
 
+
+function copySelectedVerses() {
+    if (selectedVerses.length === 0) return;
+    selectedVerses.sort((a, b) => parseInt(a.verseNum) - parseInt(b.verseNum));
+
+    let copyTextStr = `📖 ${selectedVerses[0].book} - అధ్యాయం ${selectedVerses[0].chapter}\n\n`;
+    selectedVerses.forEach(v => { 
+        copyTextStr += `${v.verseNum}. ${v.text}\n`; 
+        if (v.enText && v.enText.trim() !== "") { copyTextStr += `(${v.enText})\n`; }
+        copyTextStr += `\n`;
+    });
+    copyTextStr += `- WORLD OF GOD Bible App`;
+
+    navigator.clipboard.writeText(copyTextStr).then(() => {
+        alert("వచనాలు కాపీ చేయబడ్డాయి! (Copied)");
+        clearVerseSelection();
+    }).catch(err => {
+        console.error('Copy failed', err);
+    });
+}
 // ------------------------------------
 // Highlights Logic
 // ------------------------------------

@@ -173,6 +173,10 @@ body.dark-mode .chapter-btn.active { color: var(--bg); background: var(--accent)
     line-height: 1.5;
     font-style: italic;
 }
+/* Parallel Mode ఆన్ అయినప్పుడు మాత్రమే కనిపిస్తుంది */
+.show-parallel .verse-text-en {
+    display: block;
+}
 body.dark-mode .verse-text-en { color: #9ca3af; }
 body.show-parallel .verse-text-en { display: block; }
 
